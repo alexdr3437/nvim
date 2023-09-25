@@ -6,24 +6,32 @@ vim.cmd [[packadd packer.nvim]]
 return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
+    -- fuzzy find
 	use {
 		'nvim-telescope/telescope.nvim', tag = '0.1.3',
 		-- or                            , branch = '0.1.x',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
 
+    -- colorscheme
+    use "rebelot/kanagawa.nvim" 
 
-    use "rebelot/kanagawa.nvim"
-
+    -- parsing
 	use {
-		'nvim-treesitter/nvim-treesitter',
+		'nvim-treesitter/nvim-treesitter', 
 		run = ':TSUpdate'
 	}
-
+    
+    -- file navigation
 	use('theprimeagen/harpoon')
+
+    -- file  manipulation 
 	use('mbbill/undotree')
+
+    -- git 
 	use('tpope/vim-fugitive')
 
+    -- lsp, linting, formatting
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v3.x',
@@ -41,7 +49,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-   use {
+    use {
         "williamboman/mason.nvim"
     }
 
