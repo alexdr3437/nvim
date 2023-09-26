@@ -53,4 +53,14 @@ return require('packer').startup(function(use)
         "williamboman/mason.nvim"
     }
 
+    -- tasks
+    use {
+        'EthanJWright/vs-tasks.nvim',
+        requires = {
+            'nvim-lua/popup.nvim',
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim'
+        }
+    }
+
 end)
