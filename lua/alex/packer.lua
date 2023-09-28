@@ -4,32 +4,32 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
+    use 'wbthomason/packer.nvim'
 
     -- fuzzy find
-	use {
-		'nvim-telescope/telescope.nvim', tag = '0.1.3',
-		-- or                            , branch = '0.1.x',
-		requires = { {'nvim-lua/plenary.nvim'} }
-	}
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.3',
+        -- or                            , branch = '0.1.x',
+        requires = { { 'nvim-lua/plenary.nvim' } }
+    }
 
     -- colorscheme
-    use "rebelot/kanagawa.nvim" 
+    use "rebelot/kanagawa.nvim"
 
     -- parsing
-	use {
-		'nvim-treesitter/nvim-treesitter', 
-		run = ':TSUpdate'
-	}
-    
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
+
     -- file navigation
-	use('theprimeagen/harpoon')
+    use('theprimeagen/harpoon')
 
-    -- file  manipulation 
-	use('mbbill/undotree')
+    -- file  manipulation
+    use('mbbill/undotree')
 
-    -- git 
-	use('tpope/vim-fugitive')
+    -- git
+    use('tpope/vim-fugitive')
 
     -- lsp, linting, formatting
 	use {
@@ -40,14 +40,14 @@ return require('packer').startup(function(use)
 			{'williamboman/mason.nvim'},
 			{'williamboman/mason-lspconfig.nvim'},
 
-			-- LSP Support
-			{'neovim/nvim-lspconfig'},
-			-- Autocompletion
-			{'hrsh7th/nvim-cmp'},
-			{'hrsh7th/cmp-nvim-lsp'},
-			{'L3MON4D3/LuaSnip'},
-		}
-	}
+            -- LSP Support
+            { 'neovim/nvim-lspconfig' },
+            -- Autocompletion
+            { 'hrsh7th/nvim-cmp' },
+            { 'hrsh7th/cmp-nvim-lsp' },
+            { 'L3MON4D3/LuaSnip' },
+        }
+    }
 
     use "terrortylor/nvim-comment"
 
@@ -60,5 +60,8 @@ return require('packer').startup(function(use)
             'nvim-telescope/telescope.nvim'
         }
     }
+
+    -- terminal
+    use { "akinsho/toggleterm.nvim" }
 
 end)
