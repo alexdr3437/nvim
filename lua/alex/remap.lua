@@ -40,5 +40,3 @@ vim.keymap.set("i", "\"", "\"\"<Esc>ha")
 vim.keymap.set("i", "\'", "\'\'<Esc>ha")
 vim.keymap.set("i", "`", "``<Esc>ha")
 
--- terminal
-vim.keymap.set('n', "t", "<cmd>terminal<CR>")
