@@ -34,7 +34,7 @@ return require('packer').startup(function(use)
     -- lsp, linting, formatting
 	use {
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+        branch = 'v3.x',
 		requires = {
 			--- Uncomment these if you want to manage LSP servers from neovim
 			{'williamboman/mason.nvim'},
@@ -49,9 +49,7 @@ return require('packer').startup(function(use)
 		}
 	}
 
-    use {
-        "williamboman/mason.nvim"
-    }
+    use "terrortylor/nvim-comment"
 
     -- tasks
     use {
