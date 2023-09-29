@@ -9,8 +9,6 @@ vim.keymap.set("n", "<leader>hg", function() ui.nav_file(2) end)
 vim.keymap.set("n", "<leader>hh", function() ui.nav_file(3) end)
 vim.keymap.set("n", "<leader>hj", function() ui.nav_file(4) end)
 
-vim.keymap.set("n", "<leader>hn", function() ui.nav_next() end)
-vim.keymap.set("n", "<leader>hp", function() ui.nav_prev() end)
+vim.keymap.set("n", "<leader>hy", function() ui.nav_next() end)
+vim.keymap.set("n", "<leader>ht", function() ui.nav_prev() end)
 
-local term = require("harpoon.term")
-vim.keymap.set("n", "<leader>ht", function() term.gotoTerminal(1) end)
