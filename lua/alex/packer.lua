@@ -22,6 +22,10 @@ return require('packer').startup(function(use)
         run = ':TSUpdate'
     }
 
+    -- text manipulation
+    use "vim-scripts/argtextobj.vim"
+    use "michaljsmith/vim-indent-object"
+
     -- file navigation
     use('theprimeagen/harpoon')
 
@@ -63,5 +67,9 @@ return require('packer').startup(function(use)
 
     -- terminal
     use { "akinsho/toggleterm.nvim" }
+
+    -- get good
+    use 'ThePrimeagen/vim-be-good'
+
 
 end)

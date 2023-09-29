@@ -39,4 +39,3 @@ vim.keymap.set("i", "[", "[]<Esc>ha")
 vim.keymap.set("i", "\"", "\"\"<Esc>ha")
 vim.keymap.set("i", "\'", "\'\'<Esc>ha")
 vim.keymap.set("i", "`", "``<Esc>ha")
-
