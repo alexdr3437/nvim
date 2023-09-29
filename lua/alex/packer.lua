@@ -24,7 +24,7 @@ return require('packer').startup(function(use)
 
     -- text manipulation
     use "vim-scripts/argtextobj.vim"
-    use "michaljsmith/vim-indent-object"
+    use "michaeljsmith/vim-indent-object"
 
     -- file navigation
     use('theprimeagen/harpoon')
