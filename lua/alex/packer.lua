@@ -1,3 +1,5 @@
+
+
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -55,6 +57,8 @@ return require('packer').startup(function(use)
 
     use "terrortylor/nvim-comment"
 
+    use "simonrw/vim-yapf"
+
     -- tasks
     use {
         'EthanJWright/vs-tasks.nvim',
@@ -71,5 +75,6 @@ return require('packer').startup(function(use)
     -- get good
     use 'ThePrimeagen/vim-be-good'
 
+    use 'github/copilot.vim'
 
 end)
