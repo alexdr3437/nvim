@@ -71,6 +71,7 @@ return require('packer').startup(function(use)
 
     -- terminal
     use { "akinsho/toggleterm.nvim" }
+    use 'christoomey/vim-tmux-navigator'
 
     -- get good
     use 'ThePrimeagen/vim-be-good'
