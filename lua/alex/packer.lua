@@ -1,5 +1,3 @@
-
-
 -- This file can be loaded by calling `lua require('plugins')` from your init.vim
 
 -- Only required if you have packer configured as `opt`
@@ -17,6 +15,7 @@ return require('packer').startup(function(use)
 
     -- colorscheme
     use "rebelot/kanagawa.nvim"
+    use "catppuccin/nvim"
 
     -- parsing
     use {
@@ -27,6 +26,7 @@ return require('packer').startup(function(use)
     -- text manipulation
     use "vim-scripts/argtextobj.vim"
     use "michaeljsmith/vim-indent-object"
+    use "terrortylor/nvim-comment"
 
     -- file navigation
     use('theprimeagen/harpoon')
@@ -38,13 +38,13 @@ return require('packer').startup(function(use)
     use('tpope/vim-fugitive')
 
     -- lsp, linting, formatting
-	use {
-		'VonHeikemen/lsp-zero.nvim',
+    use {
+        'VonHeikemen/lsp-zero.nvim',
         branch = 'v3.x',
-		requires = {
-			--- Uncomment these if you want to manage LSP servers from neovim
-			{'williamboman/mason.nvim'},
-			{'williamboman/mason-lspconfig.nvim'},
+        requires = {
+            --- Uncomment these if you want to manage LSP servers from neovim
+            { 'williamboman/mason.nvim' },
+            { 'williamboman/mason-lspconfig.nvim' },
 
             -- LSP Support
             { 'neovim/nvim-lspconfig' },
@@ -54,8 +54,6 @@ return require('packer').startup(function(use)
             { 'L3MON4D3/LuaSnip' },
         }
     }
-
-    use "terrortylor/nvim-comment"
 
     use "simonrw/vim-yapf"
 
@@ -69,13 +67,12 @@ return require('packer').startup(function(use)
         }
     }
 
-    -- terminal
-    use { "akinsho/toggleterm.nvim" }
+    -- tmux
     use 'christoomey/vim-tmux-navigator'
 
     -- get good
     use 'ThePrimeagen/vim-be-good'
 
+    -- copilot
     use 'github/copilot.vim'
-
 end)

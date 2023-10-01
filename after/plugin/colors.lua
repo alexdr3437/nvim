@@ -1,5 +1,5 @@
-function ColorMyPencils(color)
-	vim.cmd.colorscheme('kanagawa')
+function ColorMyPencils()
+	vim.cmd.colorscheme('catppuccin')
 end
 
 ColorMyPencils()
