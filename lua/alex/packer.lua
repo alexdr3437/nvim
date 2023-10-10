@@ -31,7 +31,7 @@ return require('packer').startup(function(use)
         "windwp/nvim-autopairs",
         config = function() require("nvim-autopairs").setup {} end
     }
-
+    use "ahonn/vim-fileheader"
 
     -- file navigation
     use('theprimeagen/harpoon')
