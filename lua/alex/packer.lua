@@ -27,6 +27,11 @@ return require('packer').startup(function(use)
     use "vim-scripts/argtextobj.vim"
     use "michaeljsmith/vim-indent-object"
     use "terrortylor/nvim-comment"
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
+
 
     -- file navigation
     use('theprimeagen/harpoon')
