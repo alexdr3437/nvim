@@ -11,5 +11,85 @@ vim.keymap.set('n', '<leader>ps', function()
     })
 end)
 vim.keymap.set('n', '<leader>pw', function()
-    builtin.grep_string()
+    builtin.grep_string({
+        shorten_path = true,
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
 end)
+vim.keymap.set('n', '<leader>pb', function()
+    builtin.buffers({
+        shorten_path = true,
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pc', function()
+    builtin.commands({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>ph', function()
+    builtin.help_tags({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pt', function()
+    builtin.lsp_type_definitions({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pi', function()
+    builtin.lsp_implementations({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pr', function()
+    builtin.lsp_references({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pd', function()
+    builtin.lsp_definitions({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+vim.keymap.set('n', '<leader>pm', function()
+    builtin.man_pages({
+        layout_config = {
+            width = 0.9,
+            height = 0.9,
+        },
+    })
+end)
+
+
