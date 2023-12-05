@@ -35,7 +35,12 @@ return require('packer').startup(function(use)
     use "ahonn/vim-fileheader"
 
     -- file navigation
-    use('theprimeagen/harpoon')
+    use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
 
     -- file  manipulation
     use('mbbill/undotree')
