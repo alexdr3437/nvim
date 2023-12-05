@@ -17,6 +17,10 @@ return require('packer').startup(function(use)
     -- colorscheme
     use "rebelot/kanagawa.nvim"
     use "catppuccin/nvim"
+    use "Mofiqul/dracula.nvim"
+
+    -- minimap
+    use { 'echasnovski/mini.nvim', branch = 'stable' }
 
     -- parsing
     use {

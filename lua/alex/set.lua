@@ -28,3 +28,4 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 
+vim.g.netrw_sort_sequence = "[\\/]$,\\<core\\%(\\.\\d\\+\\)\\=\\>"
