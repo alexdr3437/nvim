@@ -6,8 +6,6 @@ lsp_zero.on_attach(function(client, bufnr)
     -- to learn the available actions
 end)
 
-require 'lspconfig'.pyright.setup {}
-
 require('lspconfig').lua_ls.setup({
     settings = {
         Lua = {
