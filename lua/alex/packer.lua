@@ -4,90 +4,97 @@
 vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+	use 'wbthomason/packer.nvim'
 
-    -- fuzzy find
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.3',
-        -- or                            , branch = '0.1.x',
-        requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim' } }
+	-- fuzzy find
+	use {
+		'nvim-telescope/telescope.nvim', tag = '0.1.3',
+		-- or                            , branch = '0.1.x',
+		requires = { { 'nvim-lua/plenary.nvim' }, { 'nvim-telescope/telescope-fzf-native.nvim' } }
 
-    }
+	}
 
-    -- colorscheme
-    use "rebelot/kanagawa.nvim"
-    use "catppuccin/nvim"
-    use "Mofiqul/dracula.nvim"
+	-- colorscheme
+	use "rebelot/kanagawa.nvim"
+	use "catppuccin/nvim"
+	use "Mofiqul/dracula.nvim"
 
-    -- minimap
-    use { 'echasnovski/mini.nvim', branch = 'stable' }
+	-- minimap
+	use { 'echasnovski/mini.nvim', branch = 'stable' }
 
-    -- parsing
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
+	-- parsing
+	use {
+		'nvim-treesitter/nvim-treesitter',
+		run = ':TSUpdate'
+	}
 
-    -- text manipulation
-    use "vim-scripts/argtextobj.vim"
-    use "michaeljsmith/vim-indent-object"
-    use "terrortylor/nvim-comment"
-    use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
-    }
-    use "ahonn/vim-fileheader"
+	-- text manipulation
+	use "vim-scripts/argtextobj.vim"
+	use "michaeljsmith/vim-indent-object"
+	use "terrortylor/nvim-comment"
+	use {
+		"windwp/nvim-autopairs",
+		config = function() require("nvim-autopairs").setup {} end
+	}
+	use "ahonn/vim-fileheader"
 
-    -- file navigation
-    use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
-    use {
-        "ThePrimeagen/harpoon",
-        branch = "harpoon2",
-        requires = { { "nvim-lua/plenary.nvim" } }
-    }
+	-- file navigation
+	use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
+	use {
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		requires = { { "nvim-lua/plenary.nvim" } }
+	}
 
-    -- file  manipulation
-    use('mbbill/undotree')
+	use {
+		"stevearc/oil.nvim",
+		config = function()
+			require("oil").setup()
+		end
+	}
 
-    -- git
-    use('tpope/vim-fugitive')
+	-- file  manipulation
+	use('mbbill/undotree')
 
-    -- lsp, linting, formatting
-    use {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v3.x',
-        requires = {
-            --- Uncomment these if you want to manage LSP servers from neovim
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+	-- git
+	use('tpope/vim-fugitive')
 
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'L3MON4D3/LuaSnip' },
-        }
-    }
+	-- lsp, linting, formatting
+	use {
+		'VonHeikemen/lsp-zero.nvim',
+		branch = 'v3.x',
+		requires = {
+			--- Uncomment these if you want to manage LSP servers from neovim
+			{ 'williamboman/mason.nvim' },
+			{ 'williamboman/mason-lspconfig.nvim' },
 
-    use "simonrw/vim-yapf"
+			-- LSP Support
+			{ 'neovim/nvim-lspconfig' },
+			-- Autocompletion
+			{ 'hrsh7th/nvim-cmp' },
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'L3MON4D3/LuaSnip' },
+		}
+	}
 
-    -- tasks
-    use {
-        'EthanJWright/vs-tasks.nvim',
-        requires = {
-            'nvim-lua/popup.nvim',
-            'nvim-lua/plenary.nvim',
-            'nvim-telescope/telescope.nvim'
-        }
-    }
+	use "simonrw/vim-yapf"
 
-    -- tmux
-    use 'christoomey/vim-tmux-navigator'
+	-- tasks
+	use {
+		'EthanJWright/vs-tasks.nvim',
+		requires = {
+			'nvim-lua/popup.nvim',
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope.nvim'
+		}
+	}
 
-    -- get good
-    use 'ThePrimeagen/vim-be-good'
+	-- tmux
+	use 'christoomey/vim-tmux-navigator'
 
-    -- copilot
-    use 'github/copilot.vim'
+	-- get good
+	use 'ThePrimeagen/vim-be-good'
+
+	-- copilot
+	use 'github/copilot.vim'
 end)
