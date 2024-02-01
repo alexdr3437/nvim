@@ -1,6 +1,18 @@
 local builtin = require('telescope.builtin')
 
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+
+vim.keymap.set('n', '<leader>pS', function()
+	builtin.live_grep({
+		cwd = vim.fn.expand('%:p:h'),
+		shorten_path = true,
+		layout_config = {
+			width = 0.9,
+			height = 0.9,
+		},
+	})
+end)
+
 vim.keymap.set('n', '<leader>ps', function()
 	builtin.live_grep({
 		shorten_path = true,
@@ -10,6 +22,7 @@ vim.keymap.set('n', '<leader>ps', function()
 		},
 	})
 end)
+
 vim.keymap.set('n', '<leader>pw', function()
 	builtin.grep_string({
 		shorten_path = true,
@@ -19,6 +32,18 @@ vim.keymap.set('n', '<leader>pw', function()
 		},
 	})
 end)
+
+vim.keymap.set('n', '<leader>pW', function()
+	builtin.grep_string({
+		cwd = vim.fn.expand('%:p:h'),
+		shorten_path = true,
+		layout_config = {
+			width = 0.9,
+			height = 0.9,
+		},
+	})
+end)
+
 vim.keymap.set('n', '<leader>pb', function()
 	builtin.buffers({
 		shorten_path = true,
