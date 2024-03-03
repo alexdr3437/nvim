@@ -53,7 +53,7 @@ vim.keymap.set('n', '<leader>pW', function()
 end)
 
 vim.keymap.set('n', '<leader>pb', function()
-	builtin.buffers({
+	builtin.current_buffer_fuzzy_find({
 		shorten_path = true,
 		layout_config = {
 			width = 0.9,
