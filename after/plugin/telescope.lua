@@ -1,10 +1,18 @@
 local builtin = require('telescope.builtin')
 
+function git_toplevel()
+	local handle = io.popen("git rev-parse --show-toplevel")
+	local result = handle:read("*a")
+	result = result:gsub("\n$", "")
+	handle:close()
+	return result
+end
+
 vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
 
 vim.keymap.set('n', '<leader>pS', function()
 	builtin.live_grep({
-		cwd = vim.fn.expand('%:p:h'),
+		cwd = git_toplevel(),
 		shorten_path = true,
 		layout_config = {
 			width = 0.9,
@@ -35,7 +43,7 @@ end)
 
 vim.keymap.set('n', '<leader>pW', function()
 	builtin.grep_string({
-		cwd = vim.fn.expand('%:p:h'),
+		cwd = git_toplevel(),
 		shorten_path = true,
 		layout_config = {
 			width = 0.9,
@@ -118,8 +126,8 @@ vim.keymap.set('n', '<leader>pm', function()
 end)
 
 vim.keymap.set('n', '<leader>pg', function()
-	builtin.git_files({
-		cwd = vim.fn.expand('%:p:h'),
+	builtin.find_files({
+		cwd = git_toplevel(),
 		layout_config = {
 			width = 0.9,
 			height = 0.9,
