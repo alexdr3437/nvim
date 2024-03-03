@@ -37,6 +37,15 @@ return require('packer').startup(function(use)
 		config = function() require("nvim-autopairs").setup {} end
 	}
 	use "ahonn/vim-fileheader"
+	use({
+		"kylechui/nvim-surround",
+		tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+		config = function()
+			require("nvim-surround").setup({
+				-- Configuration here, or leave empty to use defaults
+			})
+		end
+	})
 
 	-- file navigation
 	use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!

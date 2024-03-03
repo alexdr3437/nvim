@@ -29,3 +29,11 @@ vim.opt.updatetime = 50
 vim.g.mapleader = " "
 
 vim.g.netrw_sort_sequence = "[\\/]$,\\<core\\%(\\.\\d\\+\\)\\=\\>"
+
+vim.api.nvim_create_autocmd('TextYankPost', {
+	desc = 'Auto highlight yanked text',
+	group = vim.api.nvim_create_augroup('highlight_yank', {clear=true}),
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+})
