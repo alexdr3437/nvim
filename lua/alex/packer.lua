@@ -47,6 +47,14 @@ return require('packer').startup(function(use)
 		end
 	})
 
+	-- TODO kfjdsaf
+	use { 'folke/todo-comments.nvim',		
+		requires = 'nvim-lua/plenary.nvim',
+		config = function() require('todo-comments').setup {signs = true} end
+	}
+	
+
+
 	-- file navigation
 	use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
 	use {
@@ -105,6 +113,7 @@ return require('packer').startup(function(use)
 
 	-- get good
 	use 'ThePrimeagen/vim-be-good'
+
 
 	-- copilot
 	use 'github/copilot.vim'
