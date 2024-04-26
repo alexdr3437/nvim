@@ -1,10 +1,28 @@
 local builtin = require('telescope.builtin')
 
 function git_toplevel()
-	local handle = io.popen("git rev-parse --show-toplevel")
-	local result = handle:read("*a")
-	result = result:gsub("\n$", "")
+	-- Get the name of the current buffer, which includes its full path
+	local buffer_dir = vim.api.nvim_buf_get_name(0):match("(.*[/\\])")
+
+	-- remove 'oil://' from the start of buffer_dir, if it exists
+	buffer_dir = buffer_dir:gsub("^oil://", "")
+
+	local handle = io.popen("cd " .. buffer_dir .. " && git rev-parse --show-toplevel")
+	if not handle then
+		return nil
+	end
+
+	local result = handle:read("*a"):gsub("\n$", "")
+
 	handle:close()
+
+	print(result)
+	-- if 'not a git repository' is contained, return the directory that vim was started in
+	if string.find(result, "not a git repo", 1, true) ~= nil then
+		print("yessir")
+		return vim.fn.getcwd()
+	end
+
 	return result
 end
 

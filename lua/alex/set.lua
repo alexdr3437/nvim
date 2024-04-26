@@ -10,7 +10,7 @@ vim.opt.expandtab = false
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true 
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -25,6 +25,8 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
+
+vim.cmd [[ hi Search ctermbg=LightYellow ctermfg=Red ]]
 
 vim.g.mapleader = " "
 
