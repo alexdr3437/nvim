@@ -160,6 +160,9 @@ vim.opt.cursorline = false
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 20
 
+-- transparent background
+vim.cmd([[ hi Normal guibg=NONE ctermbg=NONE ]])
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -231,6 +234,9 @@ vim.opt.rtp:prepend(lazypath)
 --
 -- NOTE: Here is where you install your plugins.
 require("lazy").setup({
+
+	"xiyaowong/transparent.nvim",
+
 	{
 		"stevearc/oil.nvim",
 		opts = {
