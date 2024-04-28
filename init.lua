@@ -173,7 +173,17 @@ require("lazy").setup({
 		end,
 	},
 
-	"github/copilot.vim",
+	{
+		"github/copilot.vim",
+		config = function()
+			vim.keymap.set(
+				"i",
+				"<C-y>",
+				'copilot#Accept("<CR>")',
+				{ noremap = true, expr = true, silent = true, replace_keycodes = false }
+			)
+		end,
+	},
 
 	{
 		"ThePrimeagen/harpoon",
