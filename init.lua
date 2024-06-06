@@ -781,6 +781,13 @@ require("lazy").setup({
 		end,
 	},
 
+	{
+		"FabijanZulj/blame.nvim",
+		config = function()
+			require("blame").setup()
+		end,
+	},
+
 	-- {
 	-- 	"scottmckendry/cyberdream.nvim",
 	-- 	lazy = false,
