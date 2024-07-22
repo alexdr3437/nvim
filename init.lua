@@ -134,15 +134,15 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+local function get_parent_dir(path)
+	return path:match("^(.*)/[^/]+$")
+end
+
 -- walk up the directory tree until a directory named `target_dir` is found
 local function find_dir(target_dir)
 	local function dir_exists(path)
 		local stat = vim.loop.fs_stat(path)
 		return stat and stat.type == "directory" or false
-	end
-
-	local function get_parent_dir(path)
-		return path:match("^(.*)/[^/]+$")
 	end
 
 	local cwd = vim.fn.expand("%:p:h")
@@ -430,6 +430,15 @@ require("lazy").setup({
 					builtin.find_files()
 				end
 			end, { desc = "[P]earch [S]ource" })
+			vim.keymap.set("n", "<leader>pp", function()
+				local dir = find_dir("src")
+				if dir then
+					builtin.find_files({ cwd = get_parent_dir(dir) })
+				else
+					builtin.find_files()
+				end
+			end, { desc = "[P]earch [P]roject" })
+
 			vim.keymap.set("n", "<leader>pw", builtin.grep_string, { desc = "[P]earch current [W]ord" })
 			vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "[P]earch by [G]rep" })
 			vim.keymap.set("n", "<leader>pd", builtin.diagnostics, { desc = "[P]earch [D]iagnostics" })
