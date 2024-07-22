@@ -134,6 +134,34 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- walk up the directory tree until a directory named `target_dir` is found
+local function find_dir(target_dir)
+	local function dir_exists(path)
+		local stat = vim.loop.fs_stat(path)
+		return stat and stat.type == "directory" or false
+	end
+
+	local function get_parent_dir(path)
+		return path:match("^(.*)/[^/]+$")
+	end
+
+	local cwd = vim.fn.expand("%:p:h")
+	local prefix = "oil://"
+	-- Check if the file_path starts with the prefix and remove it
+	if cwd:sub(1, #prefix) == prefix then
+		cwd = cwd:sub(#prefix + 1)
+	end
+
+	while cwd do
+		local target_path = cwd .. "/" .. target_dir
+		if dir_exists(target_path) then
+			return target_path
+		end
+		cwd = get_parent_dir(cwd)
+	end
+	return nil
+end
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -391,15 +419,22 @@ require("lazy").setup({
 
 			-- See `:help telescope.builtin`
 			local builtin = require("telescope.builtin")
-			vim.keymap.set("n", "<leader>ph", builtin.help_tags, { desc = "[S]earch [H]elp" })
-			vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
-			vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "[S]earch [F]iles" })
-			vim.keymap.set("n", "<leader>ps", builtin.builtin, { desc = "[S]earch [S]elect Telescope" })
-			vim.keymap.set("n", "<leader>pw", builtin.grep_string, { desc = "[S]earch current [W]ord" })
-			vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "[S]earch by [G]rep" })
-			vim.keymap.set("n", "<leader>pd", builtin.diagnostics, { desc = "[S]earch [D]iagnostics" })
-			vim.keymap.set("n", "<leader>pr", builtin.resume, { desc = "[S]earch [R]esume" })
-			vim.keymap.set("n", "<leader>p.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			vim.keymap.set("n", "<leader>ph", builtin.help_tags, { desc = "[P]earch [H]elp" })
+			vim.keymap.set("n", "<leader>pk", builtin.keymaps, { desc = "[P]earch [K]eymaps" })
+			vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "[P]earch [F]iles" })
+			vim.keymap.set("n", "<leader>ps", function()
+				local dir = find_dir("src")
+				if dir then
+					builtin.find_files({ cwd = dir })
+				else
+					builtin.find_files()
+				end
+			end, { desc = "[P]earch [S]ource" })
+			vim.keymap.set("n", "<leader>pw", builtin.grep_string, { desc = "[P]earch current [W]ord" })
+			vim.keymap.set("n", "<leader>pg", builtin.live_grep, { desc = "[P]earch by [G]rep" })
+			vim.keymap.set("n", "<leader>pd", builtin.diagnostics, { desc = "[P]earch [D]iagnostics" })
+			vim.keymap.set("n", "<leader>pr", builtin.resume, { desc = "[P]earch [R]esume" })
+			vim.keymap.set("n", "<leader>p.", builtin.oldfiles, { desc = '[P]earch Recent Files ("." for repeat)' })
 			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
 			-- Slightly advanced example of overriding default behavior and theme
